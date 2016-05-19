@@ -51,8 +51,8 @@ int main() {
 
     for(int i = 0; i < MATRIX_SIZE; i++) {
         for(int j = 0; j < MATRIX_SIZE; j++) {
-            m[i][j] = i+j;
-            //std::cin >> m[i][j];
+            //m[i][j] = i+j;
+            std::cin >> m[i][j];
         }
     }
 
