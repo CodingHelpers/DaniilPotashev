@@ -2,7 +2,6 @@
 #include <sstream>
 #include <cstring>
 #include <cstdlib>
-#include <cstdint>
 
 // Структура Order
 struct Note {
@@ -10,7 +9,7 @@ public:
     std::string Name;
     std::string Soname;
     std::string Phone;
-    uint BirthDay[3];
+    unsigned BirthDay[3];
 };
 
 // Обмен значениями между двумя структурами
@@ -31,9 +30,9 @@ int GetN(const std::string& phone, int n) {
 }
 
 // Сортировка массива по возрастанию первых трех чисел
-void SortByPhone(Note notes[], uint size) {
-    for (uint i = 0; i < size; i++) {
-        for (uint j = 0; j < size - 1; j++) {
+void SortByPhone(Note notes[], unsigned size) {
+    for (unsigned i = 0; i < size; i++) {
+        for (unsigned j = 0; j < size - 1; j++) {
             if (GetN(notes[j].Phone, 3) > GetN(notes[j+1].Phone, 3)) {
                 SwapNotes(notes[j], notes[j+1]);
             }
@@ -42,7 +41,7 @@ void SortByPhone(Note notes[], uint size) {
 }
 
 // Конвертация даты в 3-интовом массиве в строку
-std::string date2string(const uint date[3]) {
+std::string date2string(const unsigned date[3]) {
     std::stringstream ss;
     ss << date[0] << "/" << date[1] << "/" << date[2];
     return ss.str();
@@ -59,14 +58,14 @@ void PrintNote(const Note& note) {
 // определение и вывод на экран записей,
 // в которых фамилия совпадает со значением, введенным с клавиатуры,
 // либо сообщение об отсутствии таковых.
-void Find(Note notes[], uint size) {
+void Find(Note notes[], unsigned size) {
     std::string soname_to_find;
     std::cout << "Enter soname: ";
     std::cin >> soname_to_find;
 
     // Поиск в массиве записей с такой же фамилией
     bool found = false;
-    for(uint i = 0; i < size; i++) {
+    for(unsigned i = 0; i < size; i++) {
         if(soname_to_find == notes[i].Soname) {
             found = true;
             PrintNote(notes[i]);
@@ -89,14 +88,14 @@ int main () {
 
     // Вывод массива структур
     std::cout << "Notes:\n";
-    for(uint i = 0; i < 4; i++) {
+    for(unsigned i = 0; i < 4; i++) {
         PrintNote(notes[i]);
     }
 
     // Сортировка массива структур и вывод на экран
     std::cout << "\nSorted by number notes:\n";
     SortByPhone(notes, 4);
-    for(uint i = 0; i < 4; i++) {
+    for(unsigned i = 0; i < 4; i++) {
         PrintNote(notes[i]);
     }
 
